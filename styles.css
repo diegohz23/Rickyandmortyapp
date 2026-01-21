@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Orbitron', Verdana, sans-serif;
+    font-family: Verdana, sans-serif;
     color: #eaffea;
     min-height: 100vh;
     background-image: url("https://wallpapercave.com/wp/wp3277692.jpg");
@@ -26,11 +26,11 @@ body::before {
     display: none;
 }
 
-/* HEADER */
+/* header */
 header {
     background: rgba(0,255,180,.25);
     backdrop-filter: blur(6px);
-    padding: 20px;
+    padding: 18px;
     text-align: center;
     border-bottom: 2px solid #00ff9c;
     box-shadow: 0 0 20px rgba(0,255,156,.6);
@@ -41,29 +41,25 @@ header h1 {
 }
 
 header input {
-    padding: 8px;
-    border-radius: 20px;
+    padding: 7px 12px;
+    border-radius: 18px;
     border: none;
     outline: none;
 }
 
 header button {
-    padding: 8px 18px;
-    border-radius: 20px;
+    padding: 7px 16px;
+    border-radius: 18px;
     border: none;
     margin-left: 5px;
     cursor: pointer;
     background: linear-gradient(90deg, #00ff88, #00cc66);
     color: #003300;
     font-weight: bold;
-    box-shadow: 0 0 15px #00ff88;
+    box-shadow: 0 0 12px #00ff88;
 }
 
-header button:hover {
-    box-shadow: 0 0 25px #00ff88;
-}
-
-/* CONTAINER */
+/* container */
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -72,7 +68,7 @@ header button:hover {
     justify-content: center;
 }
 
-/* CARD */
+/* card */
 .card {
     width: 230px;
     background: rgba(0,10,8,.85);
@@ -87,7 +83,7 @@ header button:hover {
 }
 
 .card:hover {
-    transform: scale(1.08);
+    transform: scale(1.07);
 }
 
 .card img {
@@ -101,27 +97,21 @@ header button:hover {
     margin: 10px 0;
 }
 
-/* BOTÓN */
+/* boton de detalles */
 .btn {
-    margin-top: 15px;
-    padding: 10px;
+    margin-top: 12px;
+    padding: 8px;
     width: 100%;
-    border-radius: 25px;
+    border-radius: 22px;
     border: none;
     background: linear-gradient(90deg, #00ff88, #00cc66);
     color: #003300;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 15px #00ff88;
-    transition: all .3s ease;
+    box-shadow: 0 0 12px #00ff88;
 }
 
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px #00ff88;
-}
-
-/* DETAILS */
+/* details */
 .details {
     display: flex;
     justify-content: center;
@@ -144,18 +134,19 @@ header button:hover {
     margin-bottom: 15px;
 }
 
-/* STATUS */
+/* status */
 .status {
     margin: 10px 0;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 7px;
+    border-radius: 7px;
     font-weight: bold;
+    font-size: 14px;
 }
 
 .alive {
     background: #00ff88;
     color: #003300;
-    box-shadow: 0 0 15px #00ff88;
+    box-shadow: 0 0 12px #00ff88;
 }
 
 .dead {
@@ -167,20 +158,16 @@ header button:hover {
     color: black;
 }
 
-/* REGRESAR */
+/* boton de regresar */
 #btnBack {
-    margin-top: 25px;
-    padding: 12px 30px;
-    border-radius: 30px;
+    margin-top: 15px;
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 18px;
     border: none;
     background: linear-gradient(90deg, #00ff88, #00cc66);
     color: #003300;
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 20px #00ff88;
-}
-
-#btnBack:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px #00ff88;
+    box-shadow: 0 0 10px #00ff88;
 }
