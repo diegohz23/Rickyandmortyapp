@@ -4,20 +4,16 @@ const details = document.querySelector('.details')
 const inputSearch = document.querySelector('#inputSearch')
 const btnSearch = document.querySelector('#btnSearch')
 
-const getData = (url) => fetch(url).then(response => response.json())
+const getData = (url) => fetch(url).then(res => res.json())
 
 const createCard = (character) => {
     const div = document.createElement('div')
-    const html = `
-        <h2>${ character.name }</h2>
-        <img src="${ character.image }" alt="${ character.name }">
-        <button
-            onclick="switchInvisible()"
-            class="btn"
-            data-id="${ character.id }">Detalles</button>
-    `
     div.className = 'card'
-    div.innerHTML = html 
+    div.innerHTML = `
+        <h2>${character.name}</h2>
+        <img src="${character.image}">
+        <button class="btn" data-id="${character.id}">Detalles</button>
+    `
     return div
 }
 
@@ -27,45 +23,41 @@ const switchInvisible = () => {
 }
 
 const searchById = (e) => {
-    if(e.target.classList.contains('btn')){
-        const id = e.target.getAttribute('data-id')
-        getData(url + id)
-             .then(character => {
-                const html = `
-                    Nombre
-                    Imagen
-                    Genero
-                    Está vivo?
-                    Ubicación
-                    Origen
-                `
-                details.querySelector('div')
-                .innerHTML = html
-            })
+    if (e.target.classList.contains('btn')) {
+        const id = e.target.dataset.id
+        getData(url + '/' + id).then(character => {
+
+            const statusClass =
+                character.status === 'Alive' ? 'alive' :
+                character.status === 'Dead' ? 'dead' : 'unknown'
+
+            details.querySelector('div').innerHTML = `
+                <h2>${character.name}</h2>
+                <img src="${character.image}">
+                <p><strong>Género:</strong> ${character.gender}</p>
+                <p class="status ${statusClass}">${character.status}</p>
+                <p><strong>Origen:</strong> ${character.origin.name}</p>
+                <p><strong>Ubicación:</strong> ${character.location.name}</p>
+            `
+            switchInvisible()
+        })
     }
 }
-
 
 const searchByName = () => {
-    cosnt name = inputSearch.value
+    const name = inputSearch.value
     if (name) {
-        getData(url + '?name=' + name)
-        .then(data => {
+        getData(url + '?name=' + name).then(data => {
             container.innerHTML = ''
-            data.results.forEach(character => {
-                container.appendChild(createCard(character))
-            })
+            data.results.forEach(c => container.appendChild(createCard(c)))
         })
     }
 }
 
-const page = Math.round(Math.random() * 41) + 1
-getData(url + '?page=' + page)
-    .then(data => {
-        data.results.forEach( character => {
-            container.appendChild(createCard(character))
-        })
-    }).catch(er => console.log(er))
+const page = Math.floor(Math.random() * 42) + 1
+getData(url + '?page=' + page).then(data => {
+    data.results.forEach(c => container.appendChild(createCard(c)))
+})
 
 container.addEventListener('click', searchById)
 btnSearch.addEventListener('click', searchByName)
